@@ -12,49 +12,59 @@ namespace MVC_Web
         {
             User user = new User
             {
-
                 Username = "adembulut",
                 Password = "merdiye",
                 NameSurname = "Adem Bulut",
-                Gsm = "+90 507 727 80 14",
+                Gsm = "05077278014",
                 Address = "Gültepe OFFICE B Blok Kat:9 No:902",
                 isAdmin = true,
                 Mail = "adembulutapp@gmail.com",
+                Title = @"Asp.Net - Android Developer / Professional Walker :)",
                 WebSite = "adem-bulut.com"
             };
             context.Users.Add(user);
+            context.SaveChanges();
             Category cat = new Category { Name = "General" };
             context.Categories.Add(cat);
+
             context.SaveChanges();
 
-            Article newArticle = new Article{
-
+            Article newArticle = new Article
+            {
                 AddedDate = DateTime.Now,
-                CategoryID=cat.Id,
+                CategoryID = cat.Id,
                 UserID = user.Id,
-                Header="First Article",
-                Content="Content of First Article",
-                ImagePath="http://placehold.it/600x400"
-            }
+                Header = "First Article",
+                Content = "Content of First Article",
+                ImagePath = "http://placehold.it/600x400"
+            };
             context.Articles.Add(newArticle);
             context.SaveChanges();
-            Comment firstComment = new Comment{
+
+
+            Comment firstComment = new Comment
+            {
                 NameSurname = "Tom Cruise",
-                WebSite="http://example.com",
-                ArticleID=newArticle.Id,
+                WebSite = "http://example.com",
+                ArticleID = newArticle.Id,
                 Text = "Right Content",
                 AddedDate = DateTime.Now
             };
+            context.Comments.Add(firstComment);
             context.SaveChanges();
-            Work work = new Work{
-                AddedDate=DateTime.Now,
-                Content="First Work",
-                Header="First Work"
-                ,ImagePath="http://placehold.it/600x400",
-                UserID=user.Id
-           };
+
+            Work work = new Work
+            {
+                AddedDate = DateTime.Now,
+                Content = "First Work",
+                Header = "First Work"
+                ,
+                ImagePath = "http://placehold.it/600x400",
+                UserID = user.Id
+            };
+            context.Works.Add(work);
             context.SaveChanges();
-                
+
         }
     }
 }
