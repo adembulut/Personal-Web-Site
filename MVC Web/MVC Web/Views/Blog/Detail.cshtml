@@ -1,0 +1,126 @@
+﻿@model MVC_Web.Models.Article
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+<link href="~/Content/css/comment.css" rel="stylesheet" />
+<div class="tab-4 resp-tab-content" aria-labelledby="tab_item-4">
+    <div class="agile_about">
+        <div class="agile_about_pos">
+            <img src="~/Content/images/1.png" alt=" " class="img-responsive" />
+        </div>
+    </div>
+    <div class="agileits_agile_about">
+        <h3>@Model.Header</h3>
+        <br />
+
+        <center>
+            <div class="agile_about_blog_right_grid_list">
+                <ul>
+                    <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">@Model.User.NameSurname</a></li>
+                    <li style="margin-right:10px"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">@Model.Comments.Count Comments</a></li>
+                    <li><span class="glyphicon glyphicon-edit"></span><a href="#">@Model.Category.Name</a></li>
+                </ul>
+            </div><br />
+            <img src="@Model.ImagePath" class="img-responsive" />
+        </center>
+
+
+        <div class="dkadem_work_detail_p" style="margin:30px;">
+            <p>
+                @Model.Content
+            </p>
+        </div>
+
+        
+
+
+
+        <div class="dkadem">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+            <div class="row">
+                <!-- Contenedor Principal -->
+                <div class="comments-container">
+                    <h1>Comments</h1>
+                    <ul id="comments-list" class="comments-list">
+                        <li>
+                            <div class="comment-main-level">
+                                <!-- Avatar -->
+                                <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
+                                <!-- Contenedor del Comentario -->
+                                <div class="comment-box">
+                                    <div class="comment-head">
+                                        <h6 class="comment-name by-author">Agustin Ortiz</h6>
+                                        <span>hace 20 minutos</span>
+                                        <i class="fa fa-reply"></i>
+                                        <i class="fa fa-heart"></i>
+                                    </div>
+                                    <div class="comment-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Respuestas de los comentarios -->
+                            <ul class="comments-list reply-list">
+                                <li>
+                                    <!-- Avatar -->
+                                    <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
+                                    <!-- Contenedor del Comentario -->
+                                    <div class="comment-box">
+                                        <div class="comment-head">
+                                            <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+                                            <span>hace 10 minutos</span>
+                                            <i class="fa fa-reply"></i>
+                                            <i class="fa fa-heart"></i>
+                                        </div>
+                                        <div class="comment-content">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- Avatar -->
+                                    <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
+                                    <!-- Contenedor del Comentario -->
+                                    <div class="comment-box">
+                                        <div class="comment-head">
+                                            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                                            <span>hace 10 minutos</span>
+                                            <i class="fa fa-reply"></i>
+                                            <i class="fa fa-heart"></i>
+                                        </div>
+                                        <div class="comment-content">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="comment-main-level">
+                                <!-- Avatar -->
+                                <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
+                                <!-- Contenedor del Comentario -->
+                                <div class="comment-box">
+                                    <div class="comment-head">
+                                        <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+                                        <span>hace 10 minutos</span>
+                                        <i class="fa fa-reply"></i>
+                                        <i class="fa fa-heart"></i>
+                                    </div>
+                                    <div class="comment-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    
+</div>

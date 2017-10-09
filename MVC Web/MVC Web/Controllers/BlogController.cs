@@ -16,5 +16,18 @@ namespace MVC_Web.Controllers
             List<Article> articles = db.Articles.OrderByDescending(x => x.AddedDate).ToList();
             return View(articles);
         }
+
+        public ActionResult Detail(int? id)
+        {
+            if (id != null && id > 0)
+            {
+                Article article = db.Articles.Find(id);
+                if (article != null)
+                {
+                    return View(article);
+                }
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
