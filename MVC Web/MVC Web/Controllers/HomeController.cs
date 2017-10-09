@@ -17,7 +17,20 @@ namespace MVC_Web.Controllers
         public ActionResult Index()
         {
             User user = db.Users.FirstOrDefault(x => x.isAdmin == true);
+            
             return View(user);
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+
     }
 }
