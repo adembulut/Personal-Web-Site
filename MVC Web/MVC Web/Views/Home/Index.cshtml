@@ -1,9 +1,17 @@
 ﻿@model MVC_Web.Models.User
+           @using MVC_Web.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/_LayoutPage.cshtml";
+    List<Article> articles = ViewBag.articles;
 }
-
+@helper Kisalt(string articleText) { 
+    if (articleText.Length > 115)
+    {
+        articleText = articleText.Substring(0, 113) + "...";
+    }
+    <text>@articleText</text>
+    }
 <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
     <div class="wthree_tab_content">
         <img src="~/Content/images/banner.jpg" alt=" " class="img-responsive" />
@@ -177,9 +185,9 @@
         -->
         <script src="~/Content/js/jquery.swipebox.min.js"></script>
         <script type="text/javascript">
-jQuery(function ($) {
-    $(".swipebox").swipebox();
-});
+            jQuery(function ($) {
+                $(".swipebox").swipebox();
+            });
         </script>
     </div>
 </div>
@@ -191,62 +199,44 @@ jQuery(function ($) {
     </div>
     <div class="agileits_agile_about">
         <h3>Blog</h3>
-        <!--<div class="agileits_agile_about_blog">
-            <div class="col-md-6 agileits_agile_about_blog_left">
-                <div class="agile_about_blog_left_grid">
-                    <a href="#" data-toggle="modal" data-target="#myModal"><img src="~/Content/images/8.jpg" alt=" " class="img-responsive" /></a>
-                    <div class="agile_about_blog_left_grid_pos">
-                        <ul>
-                            <li>20</li>
-                            <li>July, 2016</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 agileits_agile_about_blog_right">
-                <div class="agile_about_blog_right_grid">
-                    <div class="agile_model">
-                        <a href="#" data-toggle="modal" data-target="#myModal">consequat sapien commodo</a>
-                    </div>
-                    <div class="agile_about_blog_right_grid_list">
-                        <ul>
-                            <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">Admin</a></li>
-                            <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">2 Comments</a></li>
-                        </ul>
-                    </div>
-                    <p>Pellentesque eleifend ultricies tellus,varius risus, id dignissim sapien velit id felis ac cursus eros mattis et.</p>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>-->
 
-        <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        DK
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <section>
-                        <div class="modal-body">
-                            <img src="~/Content/images/8.jpg" alt=" " class="img-responsive" />
-                            <p>
-                                Ut enim ad minima veniam, quis nostrum
-                                exercitationem ullam corporis suscipit laboriosam,
-                                nisi ut aliquid ex ea commodi consequatur? Quis autem
-                                vel eum iure reprehenderit qui in ea voluptate velit
-                                esse quam nihil molestiae consequatur, vel illum qui
-                                dolorem eum fugiat quo voluptas nulla pariatur.
-                                <i>
-                                    " Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-                                    esse quam nihil molestiae consequatur.
-                                </i>
-                            </p>
+        @if (articles.Count > 0)
+        {
+            foreach (Article item in articles)
+            {
+                <div class="agileits_agile_about_blog" style="margin-top:32px;">
+                    <div class="col-md-6 agileits_agile_about_blog_left">
+                        <div class="agile_about_blog_left_grid">
+                            <a href="#" ><img src="~/Content/images/8.jpg" alt=" " class="img-responsive" /></a>
+                            <div class="agile_about_blog_left_grid_pos">
+                                <ul>
+                                    <li>@item.AddedDate.Value.Day</li>
+                                    <li>@item.AddedDate.Value.ToString("MMMM") , @item.AddedDate.Value.Year</li>
+                                </ul>
+                            </div>
                         </div>
-                    </section>
+                    </div>
+                    <div class="col-md-6 agileits_agile_about_blog_right">
+                        <div class="agile_about_blog_right_grid">
+                            <div class="agile_model">
+                                <a href="#">@item.Header</a>
+                            </div>
+                            <div class="agile_about_blog_right_grid_list">
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">@item.User.NameSurname</a></li>
+                                    <li style="margin-right:10px"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">@item.Comments.Count Comments</a></li>
+                                    <li><span class="glyphicon glyphicon-edit"></span><a href="#">@item.Category.Name</a></li>
+                                </ul>
+                            </div>
+                            <p>@Kisalt(item.Content)</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
                 </div>
-            </div>
-        </div>
+            }
+        }
+        
+        
     </div>
 
 </div>
