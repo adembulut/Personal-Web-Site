@@ -16,7 +16,8 @@ namespace MVC_Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            User user = db.Users.FirstOrDefault(x => x.isAdmin == true);
+            List<User> Kullanicilar = db.Users.ToList();
+            User user = db.Users.FirstOrDefault(x => x.Username=="adembulut");
             
             return View(user);
         }

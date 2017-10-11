@@ -17,6 +17,8 @@ namespace MVC_Web.Controllers
             return View(articles);
         }
 
+
+
         public ActionResult Detail(int? id)
         {
             if (id != null && id > 0)
@@ -29,5 +31,28 @@ namespace MVC_Web.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public string AddComment(Comment cmm)
+        {
+            if (cmm != null)
+            {
+                if (cmm.CommentID < 1)
+                {
+                    cmm.CommentID = null;
+                }
+                cmm.AddedDate = DateTime.Now;
+                cmm.isCheck = false;
+                db.Comments.Add(cmm);
+                db.SaveChanges();
+                return "Your comment has been successfully added.";
+            }
+            else
+            {
+                return "It was a mistake to post comment.";
+            }
+        }
+
+
     }
 }

@@ -45,9 +45,10 @@ namespace MVC_Web
             Comment firstComment = new Comment
             {
                 NameSurname = "Tom Cruise",
-                WebSite = "http://example.com",
+                Email = "abc@example.com",
                 ArticleID = newArticle.Id,
                 Text = "Right Content",
+                isCheck=true,
                 AddedDate = DateTime.Now
             };
             context.Comments.Add(firstComment);

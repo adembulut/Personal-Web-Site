@@ -357,7 +357,9 @@ th {
 }
 .glyphicon-cog:before {
   content: "\e019";
-}
+}.glyphicon-user-remove:before{
+     content:"&#xe008";
+ }
 .glyphicon-trash:before {
   content: "\e020";
 }

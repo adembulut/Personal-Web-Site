@@ -14,7 +14,7 @@ namespace MVC_Web.Models.Mapping
             this.Property(t => t.NameSurname)
                 .HasMaxLength(50);
 
-            this.Property(t => t.WebSite)
+            this.Property(t => t.Email)
                 .HasMaxLength(50);
 
             this.Property(t => t.Text)
@@ -24,11 +24,12 @@ namespace MVC_Web.Models.Mapping
             this.ToTable("Comment");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.NameSurname).HasColumnName("NameSurname");
-            this.Property(t => t.WebSite).HasColumnName("WebSite");
+            this.Property(t => t.Email).HasColumnName("Email");
             this.Property(t => t.Text).HasColumnName("Text");
             this.Property(t => t.ArticleID).HasColumnName("ArticleID");
             this.Property(t => t.CommentID).HasColumnName("CommentID");
             this.Property(t => t.AddedDate).HasColumnName("AddedDate");
+            this.Property(t => t.isCheck).HasColumnName("isCheck");
 
             // Relationships
             this.HasOptional(t => t.Article)

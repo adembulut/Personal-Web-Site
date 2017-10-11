@@ -1,8 +1,12 @@
 ﻿@model MVC_Web.Models.Article
+           @using MVC_Web.Models;
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/_LayoutPage.cshtml";
+    List<Comment> yorumlar = Model.Comments.Where(x=>x.isCheck==true).OrderByDescending(x=>x.AddedDate).ToList();
+
 }
+<script src="~/Content/js/check.js"></script>
 <link href="~/Content/css/comment.css" rel="stylesheet" />
 <div class="tab-4 resp-tab-content" aria-labelledby="tab_item-4">
     <div class="agile_about">
@@ -18,7 +22,7 @@
             <div class="agile_about_blog_right_grid_list">
                 <ul>
                     <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">@Model.User.NameSurname</a></li>
-                    <li style="margin-right:10px"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">@Model.Comments.Count Comments</a></li>
+                    <li style="margin-right:10px"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">@Model.Comments.Where(x=>x.isCheck==true).ToList().Count Comments</a></li>
                     <li><span class="glyphicon glyphicon-edit"></span><a href="#">@Model.Category.Name</a></li>
                 </ul>
             </div><br />
@@ -43,78 +47,91 @@
                 <div class="comments-container">
                     <h1>Comments</h1>
                     <ul id="comments-list" class="comments-list">
-                        <li>
-                            <div class="comment-main-level">
-                                <!-- Avatar -->
-                                <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
-                                <!-- Contenedor del Comentario -->
-                                <div class="comment-box">
-                                    <div class="comment-head">
-                                        <h6 class="comment-name by-author">Agustin Ortiz</h6>
-                                        <span>hace 20 minutos</span>
-                                        <i class="fa fa-reply"></i>
-                                        <i class="fa fa-heart"></i>
-                                    </div>
-                                    <div class="comment-content">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Respuestas de los comentarios -->
-                            <ul class="comments-list reply-list">
-                                <li>
-                                    <!-- Avatar -->
-                                    <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
-                                    <!-- Contenedor del Comentario -->
-                                    <div class="comment-box">
-                                        <div class="comment-head">
-                                            <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-                                            <span>hace 10 minutos</span>
-                                            <i class="fa fa-reply"></i>
-                                            <i class="fa fa-heart"></i>
+
+                        @if (yorumlar.Count > 0)
+                        {
+                            foreach (Comment item in yorumlar)
+                            {
+                                if (item.CommentID == null)
+                                {
+                                    <li>
+                                        <div class="comment-main-level">
+                                            <!-- Avatar -->
+                                            <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
+                                            <!-- Contenedor del Comentario -->
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">@item.NameSurname</h6>
+                                                    <span>@item.AddedDate.Value.ToShortDateString() @item.AddedDate.Value.ToShortTimeString()</span>
+                                                    <i class="fa fa-reply" data-id="@item.Id" data-name="@item.NameSurname" id="reply" onclick="replyCalistir(this)"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    @item.Text
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="comment-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <!-- Avatar -->
-                                    <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
-                                    <!-- Contenedor del Comentario -->
-                                    <div class="comment-box">
-                                        <div class="comment-head">
-                                            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-                                            <span>hace 10 minutos</span>
-                                            <i class="fa fa-reply"></i>
-                                            <i class="fa fa-heart"></i>
-                                        </div>
-                                        <div class="comment-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="comment-main-level">
-                                <!-- Avatar -->
-                                <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
-                                <!-- Contenedor del Comentario -->
-                                <div class="comment-box">
-                                    <div class="comment-head">
-                                        <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-                                        <span>hace 10 minutos</span>
-                                        <i class="fa fa-reply"></i>
-                                        <i class="fa fa-heart"></i>
-                                    </div>
-                                    <div class="comment-content">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                                        @if (item.Comment1.Count > 0)
+                                        {
+                                            <ul class="comments-list reply-list">
+                                                @foreach (Comment rr in item.Comment1.Where(x=>x.isCheck == true).ToList())
+                                                {
+                                                    <li>
+                                                        <!-- Avatar -->
+                                                        <div class="comment-avatar"><img src="http://placehold.it/64x64" alt=""></div>
+                                                        <!-- Contenedor del Comentario -->
+                                                        <div class="comment-box">
+                                                            <div class="comment-head">
+                                                                <h6 class="comment-name">@rr.NameSurname</h6>
+                                                                <span>@rr.AddedDate.Value.ToShortDateString() @rr.AddedDate.Value.ToShortTimeString()</span>
+                                                            </div>
+                                                            <div class="comment-content">
+                                                                @rr.Text
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                                
+                                               
+                                                
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            }
+                        }
+                        
                     </ul>
+                    <div class="yeni-Yorum">
+                        <form id="CommentForm">
+                            @Html.AntiForgeryToken()
+                            <div class=" form-group">
+                                <input hidden value="@Model.Id" name="ArticleID" id="ArticleID" />
+                                <input hidden value="" name="CommentID" id="CommentID" />
+                            </div>
+                            <div class="form-group" hidden id="RefDiv">
+                                <b>Ref :</b>
+                                <input type="text" value="" readonly name="RefComment" id="RefComment" />
+                                <span class="glyphicon glyphicon-remove" id="refRemove"></span>
+                            </div>
+                            <div class="form-group">
+                                <b>*Name Surname :</b>
+                                <input class="form-control" type="text" name="NameSurname" id="NameSurname" required/>
+                            </div>
+                            <div class="form-group">
+                                <b>*Email : </b>
+                                <input class="form-control" type="email" name="Email" id="Email" required/>
+                            </div>
+                            <div class="form-group">
+                                <b>*Your Comment : </b>
+                                <textarea rows="3" class="form-control" required id="Text" name="Text"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-default" onclick="calistir()" value="Send Comment" />
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,3 +141,4 @@
 
     
 </div>
+
