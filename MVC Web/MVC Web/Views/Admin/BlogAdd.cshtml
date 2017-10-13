@@ -1,0 +1,52 @@
+﻿@model List<MVC_Web.Models.Category>
+@{
+    ViewBag.Title = "BlogAdd";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" method="post"enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Article Image:</label>
+                    <input type="file" accept="image/x-png,image/gif,image/jpeg" id="foto" name="foto" required />
+                </div>
+                <div class="form-group">
+                    <label>Article Header:</label>
+                    <input type="text" required id="Header" name="Header" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Category:</label>
+                    <select id="CategoryID" name="CategoryID" class="form-control">
+                        @if (Model.Count > 0)
+                        {
+                            foreach (MVC_Web.Models.Category item in Model)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Content:</label>
+                    <textarea class="form-control" required id="Content" name="Content" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit" id="Save">Save</button>
+                </div>
+            </form>
+            <p id="ContentPreview">dkadem</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Content').keyup(function () {
+            $('#ContentPreview').html($(this).val());
+        });
+    });
+</script>

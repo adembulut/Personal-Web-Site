@@ -88,8 +88,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\AdminStyle.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\comment.css" />
+    <Content Include="Content\css\Login.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\swipebox.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -117,8 +119,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\WorkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,6 +159,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Work\Detail.cshtml" />
     <Content Include="Views\Blog\Detail.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AdminEdit.cshtml" />
+    <Content Include="Views\Admin\BlogAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
