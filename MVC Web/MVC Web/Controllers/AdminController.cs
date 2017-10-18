@@ -93,5 +93,116 @@ namespace MVC_Web.Controllers
         {
             return View(db.Articles.ToList());
         }
+
+        public ActionResult BlogEdit(int? id)
+        {
+            if (id != null && id > 0)
+            {
+                Article article = db.Articles.Find(id);
+                if (article != null)
+                    return View(article);
+            }
+            return RedirectToAction("Blogs");
+        }
+
+
+        [HttpPost]
+        public ActionResult BlogEdit(Article article, HttpPostedFileBase foto)
+        {
+
+            if (article != null)
+            {
+                if (article.Id > 0)
+                {
+                    Article eski = db.Articles.Find(article.Id);
+                    if (eski != null)
+                    {
+                        eski.Header = article.Header;
+                        eski.Content = article.Content;
+                        if (foto != null)
+                        {
+                            WebImage image = new WebImage(foto.InputStream);
+                            image.Resize(600, 400, false, false);
+
+                            FileInfo fotoinfo = new FileInfo(foto.FileName);
+                            string newfoto = Guid.NewGuid().ToString() + fotoinfo.Extension;
+                            image.Save("~/Content/uploads/" + newfoto);
+                            string imagePath = "~/Content/uploads/" + newfoto;
+
+
+                            string eskiResim = eski.ImagePath;
+                            eski.ImagePath = imagePath;
+                            try
+                            {
+                                eskiResim = Request.MapPath(eskiResim);
+                            }
+                            catch (Exception) { }
+
+                            if (!String.IsNullOrEmpty(eskiResim))
+                            {
+                                if (System.IO.File.Exists(eskiResim))
+                                {
+                                    System.IO.File.Delete(eskiResim);
+                                }
+                            }
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            db.SaveChanges();
+                            return RedirectToAction("Blogs");
+                        }
+
+                    }
+                }
+            }
+            return RedirectToAction("Blogs");
+        }
+
+        public ActionResult BlogDetail(int? id)
+        {
+            if (id != null && id > 0)
+            {
+                Article article = db.Articles.Find(id);
+                if (article != null)
+                {
+                    return View(article);
+                }
+            }
+            return RedirectToAction("Blogs");
+        }
+
+        public ActionResult BlogRemove(int? id)
+        {
+            if (id != null && id > 0)
+            {
+                Article article = db.Articles.Find(id);
+                if (article != null)
+                {
+                    return View(article);
+                }
+            }
+            return RedirectToAction("Blogs");
+        }
+
+        [HttpPost]
+        public ActionResult BlogRemove(Article article)
+        {
+            if (article != null)
+            {
+                Article ar = db.Articles.Find(article.Id);
+                if (ar != null)
+                {
+                    List<Comment> liste = ar.Comments.ToList();
+                    db.Comments.RemoveRange(liste);
+                    db.Articles.Remove(ar);
+                    db.SaveChanges();
+                    return RedirectToAction("/Admin/Blogs");
+                }
+                return View(ar);
+            }
+            return RedirectToAction("Blogs");
+        
+        }
     }
 }
