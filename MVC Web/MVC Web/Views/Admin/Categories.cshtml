@@ -1,0 +1,89 @@
+﻿@model List<MVC_Web.Models.Category>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <div class="row" style="background-color:#f6baba;padding:10px;border-radius:4px;">
+        <form method="post" action="/Admin/CategoryAdd">
+            <div class="col-md-2">
+                <label for="Name">Category Name :</label>
+            </div>
+            <div class="col-md-8">
+                <input class="form-control col-md-6" id="Name" required name="Name" />
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success" type="submit" value="Add Category">Add Category</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <center><p style="color:red;">@ViewBag.Message</p></center>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Category</th>
+                    <th>Articles</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MVC_Web.Models.Category item in Model)
+                {
+                    <tr>
+                        <td scope="row">@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Articles.ToList().Count</td>
+                        <td>
+                            <a id="btn-Edit" data-id="@item.Id" data-name="@item.Name" onclick="CategoryEdit(this)">Edit </a>
+                            @if (item.Articles.ToList().Count == 0)
+                            {<text>|</text>
+                            <a href="@Url.Content("/Admin/CategoryRemove/"+item.Id)">Delete </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="myEditModal" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Category Edit</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/Admin/CategoryEdit">
+                    <input id="EditId" name="EditId" value="" hidden required/>
+                    <div class="form-group">
+                        <label for="name">Category Name :</label>
+                        <input class="form-control" id="EditName" name="EditName" required />
+                    </div>
+                    <div class="form-group" style="">
+                        <button type="submit" class="btn bg-success pull-right" style="margin-left:3px;margin-right:3px;">Save</button>
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function CategoryEdit(event) {
+        $('#EditId').val(event.dataset.id);
+        $('#EditName').val(event.dataset.name);
+        $('#myEditModal').modal('show');
+    }
+</script>

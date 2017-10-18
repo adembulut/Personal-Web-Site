@@ -168,6 +168,7 @@
     <Content Include="Views\Admin\BlogEdit.cshtml" />
     <Content Include="Views\Admin\BlogDetail.cshtml" />
     <Content Include="Views\Admin\BlogRemove.cshtml" />
+    <Content Include="Views\Admin\Categories.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

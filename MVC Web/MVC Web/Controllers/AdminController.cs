@@ -195,14 +195,88 @@ namespace MVC_Web.Controllers
                 {
                     List<Comment> liste = ar.Comments.ToList();
                     db.Comments.RemoveRange(liste);
+                    try
+                    {
+                        string resimyolu = Request.MapPath(ar.ImagePath);
+                        if (System.IO.File.Exists(resimyolu))
+                            System.IO.File.Delete(resimyolu);
+                    }
+                    catch (Exception) { }
                     db.Articles.Remove(ar);
                     db.SaveChanges();
-                    return RedirectToAction("/Admin/Blogs");
+                    return RedirectToAction("Blogs");
                 }
                 return View(ar);
             }
             return RedirectToAction("Blogs");
         
+        }
+
+        public ActionResult Categories()
+        {
+            if(TempData["Message"] !=null){
+            ViewBag.Message = TempData["Message"].ToString();
+
+            }
+            return View(db.Categories.ToList());
+        }
+      
+        [HttpPost]
+        public ActionResult CategoryAdd(Category category)
+        {
+            if (category != null)
+            {
+                db.Categories.Add(category);
+                db.SaveChanges();
+                return RedirectToAction("Categories",db.Categories.ToList());
+            }
+            return View();
+        }
+        public ActionResult CategoryRemove(int? id)
+        {
+            if (id != null && id > 0)
+            {
+                Category categor = db.Categories.Find(id);
+                if (categor != null && categor.Articles.ToList().Count == 0)
+                {
+                    db.Categories.Remove(categor);
+                    db.SaveChanges();
+                   
+                }
+            }
+            return RedirectToAction("Categories", db.Categories.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult CategoryEdit(string EditId,string EditName)
+        {
+            if(!String.IsNullOrEmpty(EditId) && !String.IsNullOrEmpty(EditName) )
+            {
+                try
+                {
+int Id = Convert.ToInt32(EditId);
+                if (Id > 0 && EditName.Trim().Length>0)
+                {
+                    Category category = db.Categories.Find(Id);
+                    if (category != null)
+                    {
+                        category.Name = EditName;
+                        db.SaveChanges();
+                        TempData["Message"] = "Category edited.";
+                    }
+                }
+                else
+                {
+                    TempData["Message"] = "Name must consist of at least 1 character";
+                }
+                }
+                catch (Exception) {
+                    TempData["Message"] = "An Error corrupted.";
+                }
+                
+            }
+            return RedirectToAction("Categories", db.Categories.ToList());
+
         }
     }
 }

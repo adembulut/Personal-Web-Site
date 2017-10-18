@@ -21,8 +21,18 @@
     
 </head>
 <body>
+    <style type="text/css">
+        .dkadem-nav-top{
+            margin-bottom:15px;
+        }
+    </style>
+    <div class="container dkadem-nav-top">
+        <div class="row">
+            <a href="@Url.Content("/Admin/Blogs")">Blogs</a> | 
+            <a href="@Url.Content("/Admin/Categories")">Categories</a> |
 
-    <!--/.navbar -->
+        </div>
+    </div>
     @RenderBody()
 </body>
 </html>
