@@ -22,17 +22,65 @@
 </head>
 <body>
     <style type="text/css">
-        .dkadem-nav-top{
-            margin-bottom:15px;
+        body{
+            background-image:url("../Content/images/back.png");
+        }
+        form{
+            background-color:white;
+            opacity:0.9;
+            padding:10px;
+            border-radius:6px;
+        }
+        table{
+            background-color:white;
+            opacity:0.9;
+            padding:10px;
+        }
+        .dkadem-nav-row{
+            padding:15px;
+            border-radius:4px;
+            background-color:rgba(0, 208, 255, 0.79);
+        }
+        .dkadem-nav-row a{
+            padding:6px;
+            margin:5px;
+            background-color:#0094ff;
+            color:#000000;
+            border-radius:4px;
+        }
+        .dkadem-nav-row a:hover{
+            color:white;
+            border-bottom-left-radius:0;
+            padding-left:10px;
+            padding-right:10px;
+        }
+        .container{
+            margin-bottom:8px;
+        }
+        .row{
+            margin-top:5px;
+        }
+        .dkadem-category{
+            border:1px solid red;
+            background-color:white;
+            opacity:0.9;
+            margin-top:8px;
+        }
+        .alttaraf{
+            padding:10px;
+            border-radius:4px;
+            background-color:rgba(0, 208, 255, 0.79);
         }
     </style>
-    <div class="container dkadem-nav-top">
-        <div class="row">
+        <div class="dkadem-nav-row">
+            <a href="@Url.Content("/Admin/LogOut")" style="margin-left:3px;margin-right:15px;background:rgba(255, 16, 0, 0.82);">Logout</a> 
             <a href="@Url.Content("/Admin/Blogs")">Blogs</a> | 
+            <a href="@Url.Content("/Admin/Works")">Works</a> |
             <a href="@Url.Content("/Admin/Categories")">Categories</a> |
+            <a href="@Url.Content("/Admin/Comments")">Comments</a>
+           
 
         </div>
-    </div>
     @RenderBody()
 </body>
 </html>

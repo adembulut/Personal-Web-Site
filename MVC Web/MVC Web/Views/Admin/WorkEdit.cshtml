@@ -1,0 +1,34 @@
+﻿@model MVC_Web.Models.Work
+@{
+    ViewBag.Title = "WorkEdit";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <input hidden id="Id" name="Id" value="@Model.Id" />
+            <div class="form-group">
+                <span>Header : </span>
+                <input class="form-control" id="Header" maxlength="49" name="Header" required value="@Model.Header" />
+            </div>
+            <div class="form-group">
+                <span>Content :</span>
+                <textarea class="form-control" id="Content" name="Content" required>@Model.Content</textarea>
+            </div>
+            <div class="form-group">
+                <span>Image :</span>
+                <img src="@Url.Content(Model.ImagePath)" class="img-responsive" />
+            </div>
+            <div class="form-group">
+                <span>New Image :</span>
+                <input class="form-control" type="file" accept="image/x-png,image/gif,image/jpeg" placeholder="Select Image" id="foto" name="foto" />
+            </div>
+            <div class="form-group" style="padding:10px;border-radius:5px;background-color:#00ffff;">
+                <a class="btn btn-primary" href="@Url.Content("/Admin/Works")">Back</a>
+                <button type="submit" class="btn btn-success">Save work</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
