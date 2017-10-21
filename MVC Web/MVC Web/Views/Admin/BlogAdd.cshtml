@@ -5,14 +5,17 @@
 }
 
 
-
+<style>
+    form{
+        padding:10px;
+    }
+</style>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <form class="form-horizontal" method="post"enctype="multipart/form-data">
+            <form  method="post"enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Article Image:</label>
-                    <input type="file" accept="image/x-png,image/gif,image/jpeg" id="foto" name="foto" required />
+                    <input class="form-control" placeholder="Select Image" type="file" accept="image/x-png,image/gif,image/jpeg" id="foto" name="foto" required />
                 </div>
                 <div class="form-group">
                     <label>Article Header:</label>
@@ -20,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label>Category:</label>
-                    <select id="CategoryID" name="CategoryID" class="form-control">
+                    <select id="CategoryID" name="CategoryID" class="form-control" required>
                         @if (Model.Count > 0)
                         {
                             foreach (MVC_Web.Models.Category item in Model)
@@ -35,12 +38,13 @@
                     <textarea class="form-control" required id="Content" name="Content" rows="10"></textarea>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-default" type="submit" id="Save">Save</button>
+                    <a href="@Url.Content("/Admin/Blogs")" class="btn btn-primary">Back</a>
+                    <button class="btn btn-primary" type="submit" id="Save">Save</button>
                 </div>
             </form>
-            <p id="ContentPreview">dkadem</p>
+            <p id="ContentPreview"></p>
         </div>
-    </div>
+
 </div>
 
 <script type="text/javascript">

@@ -1,0 +1,21 @@
+﻿@model MVC_Web.Models.Article
+@{
+    ViewBag.Title = "BlogDetail";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h3 style="text-align:center;">@Model.Header</h3>
+        
+        <center><img src="@Url.Content(Model.ImagePath)" class="img-responsive" /></center>
+        <p style="padding:10px;">@Model.Content</p>
+        <div class="form-group">
+            <div class="alttaraf">
+                <a data-role="button" href="@Url.Content("/Admin/Blogs")" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+       
+</div>
+

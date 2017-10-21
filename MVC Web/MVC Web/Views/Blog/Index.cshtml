@@ -27,7 +27,8 @@
                 <div class="agileits_agile_about_blog" style="margin-top:32px;">
                     <div class="col-md-6 agileits_agile_about_blog_left">
                         <div class="agile_about_blog_left_grid">
-                            <a href="@Url.Content("/Blog/Detail/"+item.Id)"><img src="@item.ImagePath" alt=" " class="img-responsive" /></a>
+                            <a href="@Url.Content("/Blog/Detail/"+item.Id)">
+                            <img src="@Url.Content(item.ImagePath)" alt=" " class="img-responsive" /></a>
                             <div class="agile_about_blog_left_grid_pos">
                                 <ul>
                                     <li>@item.AddedDate.Value.Day</li>
