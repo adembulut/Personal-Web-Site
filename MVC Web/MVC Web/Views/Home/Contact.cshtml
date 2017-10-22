@@ -3,9 +3,6 @@
     ViewBag.Title = "Contact";
     Layout = "~/Views/_LayoutPage.cshtml";
 }
-
-<div class="tab-5 resp-tab-content" aria-labelledby="tab_item-5">
-    <!-- contact -->
     <div class="agile_about">
         <div class="agile_about_pos">
             <img src="~/Content/images/1.png" alt=" " class="img-responsive" />
@@ -13,21 +10,23 @@
     </div>
     <div class="agileits_agile_about">
         <h3>Contact Me</h3>
+
         <div class="agileits_agile_about_mail">
-            <form action="#" method="post">
+            <form method="post">
+                @Html.AntiForgeryToken()
+                <h4 style="color:red;">@ViewBag.Message</h4>
                 <div class="col-md-6 agileits_agile_about_mail_left">
-                    <input type="text" name="Name" placeholder="Name" required="">
-                    <input type="text" name="Subject" placeholder="Subject" required="">
+
+                    <input type="text" name="Name" id="Name" placeholder="Name" required>
+                    <input type="text" name="Subject" id="Subject" placeholder="Subject" required>
                 </div>
                 <div class="col-md-6 agileits_agile_about_mail_left">
-                    <input type="email" name="Email" placeholder="Email" required="">
-                    <input type="text" name="Phone" placeholder="Phone" required="">
+                    <input type="email" name="Email" id="Email" placeholder="Email" required>
+                    <input type="number" name="Phone" id="Phone" maxlength="11" placeholder="Phone" required>
                 </div>
                 <div class="clearfix"> </div>
-                <textarea name="Message" placeholder="Message..." required=""></textarea>
+                <textarea name="Content" id="Content" placeholder="Message..." required></textarea>
                 <input type="submit" value="Submit">
             </form>
         </div>
     </div>
-
-</div>

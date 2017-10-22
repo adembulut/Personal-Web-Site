@@ -85,7 +85,8 @@ input[type="submit"],ul.address li ul.address-text li a,.agile_about_blog_right_
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     width: 16%;
-    padding:2em 0 0;
+    /*padding:2em 0 0;*/
+    padding:10px;
     text-transform: uppercase;
     color: #fff;
     text-align: center;
@@ -471,7 +472,7 @@ ul.address li ul.address-text li a:hover{
 	display: inline-block;
 }
 /*-- contact --*/
-.agileits_agile_about_mail input[type="text"],.agileits_agile_about_mail input[type="email"],.agileits_agile_about_mail textarea{
+.agileits_agile_about_mail input[type="text"],.agileits_agile_about_mail input[type="email"],.agileits_agile_about_mail input[type="number"],.agileits_agile_about_mail textarea{
 	outline: none;
     background: #FCFCFC;
     border:1px solid #DDDDDD;

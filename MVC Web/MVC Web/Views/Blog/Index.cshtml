@@ -11,7 +11,6 @@
     }
     <text>@articleText</text>
 }
-<div class="tab-4 resp-tab-content" aria-labelledby="tab_item-4">
     <div class="agile_about">
         <div class="agile_about_pos">
             <img src="~/Content/images/1.png" alt=" " class="img-responsive" />
@@ -28,7 +27,8 @@
                     <div class="col-md-6 agileits_agile_about_blog_left">
                         <div class="agile_about_blog_left_grid">
                             <a href="@Url.Content("/Blog/Detail/"+item.Id)">
-                            <img src="@Url.Content(item.ImagePath)" alt=" " class="img-responsive" /></a>
+                                <img src="@Url.Content(item.ImagePath)" alt=" " class="img-responsive" />
+                            </a>
                             <div class="agile_about_blog_left_grid_pos">
                                 <ul>
                                     <li>@item.AddedDate.Value.Day</li>
@@ -60,4 +60,3 @@
 
     </div>
 
-</div>

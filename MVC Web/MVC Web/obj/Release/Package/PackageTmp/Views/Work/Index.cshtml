@@ -1,0 +1,54 @@
+﻿@model List<MVC_Web.Models.Work>
+@{
+    ViewBag.Title = "MyWorks";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+<style type="text/css">
+    .agileits_agile_about_portfolio_left {
+        margin-top: 25px;
+    }
+</style>
+<div class="tab-3 resp-tab-content" aria-labelledby="tab_item-3">
+    <!-- work -->
+    <div class="agile_about">
+        <div class="agile_about_pos">
+            <img src="~/Content/images/1.png" alt=" " class="img-responsive" />
+        </div>
+    </div>
+    <div class="agileits_agile_about">
+        <h3>My Work</h3>
+        <div class="agileits_agile_about_portfolio">
+            @if (Model.Count > 0)
+            {
+                foreach (MVC_Web.Models.Work item in Model)
+                {
+                    <div class="col-md-4 agileits_agile_about_portfolio_left">
+                        <div class="w3_portfolio_grid view second-effect">
+                            <a href="#">
+                                @* Buraya gidilecek yer *@
+                            <img src="@Url.Content(item.ImagePath)" alt=" " class="img-responsive" />
+                            <div class="mask">
+                                <p>Detail</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                }
+            }
+
+
+
+
+            <div class="clearfix"> </div>
+        </div>
+
+        <script src="~/Content/js/jquery.swipebox.min.js"></script>
+        <script type="text/javascript">
+            jQuery(function ($) {
+                $(".swipebox").swipebox();
+            });
+        </script>
+    </div>
+</div>
+
+

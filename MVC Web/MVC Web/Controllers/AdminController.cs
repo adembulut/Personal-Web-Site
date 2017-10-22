@@ -60,10 +60,9 @@ namespace MVC_Web.Controllers
         {
             try
             {
-                string path = Server.MapPath("~/Content/uploads/");
-                Directory.CreateDirectory(path);
+                
                 WebImage img = new WebImage(foto.InputStream);
-                img.Resize(600, 480, false, false);
+                img.Resize(640, 480, false, false);
                 FileInfo fotoinfo = new FileInfo(foto.FileName);
                 string newfoto = Guid.NewGuid().ToString() + fotoinfo.Extension;
                 img.Save("~/Content/uploads/" + newfoto);
@@ -122,7 +121,7 @@ namespace MVC_Web.Controllers
                         if (foto != null)
                         {
                             WebImage image = new WebImage(foto.InputStream);
-                            image.Resize(600, 400, false, false);
+                            image.Resize(640, 400, false, false);
 
                             FileInfo fotoinfo = new FileInfo(foto.FileName);
                             string newfoto = Guid.NewGuid().ToString() + fotoinfo.Extension;
@@ -337,10 +336,9 @@ namespace MVC_Web.Controllers
                 work.AddedDate = DateTime.Now;
                 work.UserID = (Session["Admin"] as User).Id;
 
-                string path = Server.MapPath("~/Content/uploads/");
-                Directory.CreateDirectory(path);
+                
                 WebImage img = new WebImage(foto.InputStream);
-                img.Resize(600, 480, false, false);
+                img.Resize(640, 480, false, false);
                 FileInfo fotoinfo = new FileInfo(foto.FileName);
                 string newfoto = Guid.NewGuid().ToString() + fotoinfo.Extension;
                 img.Save("~/Content/uploads/" + newfoto);
@@ -427,10 +425,9 @@ namespace MVC_Web.Controllers
                 if (foto != null)
                 {
                     WebImage image = new WebImage(foto.InputStream);
-                    image.Resize(600, 400, false, false);
+                    image.Resize(640, 400, false, false);
                     string klasor = "~/Content/uploads/";
                     string uzanti = (new FileInfo(foto.FileName)).Extension;
-                    Directory.CreateDirectory(Request.MapPath(klasor));
                     string onek = Guid.NewGuid().ToString();
                     string yeniyol = klasor + "/" + onek + uzanti;
                     image.Save(yeniyol);
@@ -446,6 +443,32 @@ namespace MVC_Web.Controllers
            return RedirectToAction("Works", db.Works.OrderBy(x => x.AddedDate).ToList());
         }
 
+        public ActionResult Messages()
+        {
+            return View(db.Messages.OrderByDescending(x=>x.AddedDate).ToList());
+        }
+        [HttpPost]
+        public string MessageRemove(int? id)
+        {
+            if (id != null && id > 0)
+            {
+                Message m = db.Messages.Find(id);
+                db.Messages.Remove(m);
+                db.SaveChanges();
+                return "Message is deleted!";
+            }
+            return "An Error Corrupted!";
+        }
+        public PartialViewResult _TopLayout()
+        {
+            ViewBag.BlogAdet = db.Articles.ToList().Count.ToString();
+            ViewBag.WorkAdet = db.Works.ToList().Count.ToString();
+            ViewBag.CategoryAdet = db.Categories.ToList().Count.ToString();
+            ViewBag.CommentAdet = db.Comments.ToList().Count.ToString();
+            ViewBag.CommentOnaysizAdet = db.Comments.Where(x => x.isCheck == false).ToList().Count.ToString();
+            ViewBag.MessageAdet = db.Messages.ToList().Count.ToString();
+            return PartialView();
+        }
        
     }
 }

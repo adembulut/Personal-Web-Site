@@ -1,0 +1,59 @@
+﻿@model MVC_Web.Models.User
+           @using MVC_Web.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    List<Article> articles = ViewBag.articles;
+}
+
+<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+    <div class="wthree_tab_content">
+        <img src="~/Content/images/banner.jpg" alt=" " class="img-responsive" />
+        <div class="wthree_tab_content_pos1">
+            <ul>
+                <li><a href="#" class="facebook"></a></li>
+                <li><a href="#" class="twitter"></a></li>
+                <li><a href="#" class="g"></a></li>
+            </ul>
+        </div>
+        <div class="wthree_tab_content_pos">
+            <div class="wthree_tab_content_pos_grid">
+                <h2>Hello</h2>
+                <h3>I'm @Model.NameSurname</h3>
+                <h6>@Model.Title</h6>
+                <ul class="address">
+                    <li>
+                        <ul class="address-text">
+                            <li><b>PHONE </b></li>
+                            <li>+90 507 727 80 14</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b>ADDRESS </b></li>
+                            <li>Gültepe MAQAM OFFICE Sivas/TURKEY</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b>E-MAIL </b></li>
+                            <li><a href="mailto:adembulutapp@gmail.com">adembulutapp@gmail.com</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b>WEBSITE </b></li>
+                            <li><a href="http://adem-bulut.com">www.adem-bulut.com</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

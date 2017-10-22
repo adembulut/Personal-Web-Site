@@ -10,14 +10,13 @@ namespace MVC_Web.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+           
             if (Session["Admin"] == null)
-                Session["Admin"] = (new dkPersonelWebContext()).Users.FirstOrDefault(x => x.isAdmin == true);
-            //if (Session["Admin"] == null || Session["Admin"].ToString() != "Admin")
-            //{
-            //    filterContext.Result = new RedirectResult("~/Home/");
-            //}
+            {
+                filterContext.Result = new RedirectResult("~/Login/");
+            }
 
-            //base.OnActionExecuting(filterContext);
+            base.OnActionExecuting(filterContext);
         }
     }
 }

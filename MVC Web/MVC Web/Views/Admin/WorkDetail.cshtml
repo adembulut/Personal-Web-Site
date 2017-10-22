@@ -4,6 +4,7 @@
     Layout = "~/Views/_LayoutAdmin.cshtml";
 }
 <div class="container">
+    
     <div class="row">
         <h3 style="text-align:center;">@Model.Header</h3>
 
@@ -13,13 +14,7 @@
     </div>
 </div>
 
-<style type="text/css">
-    .alttaraf{
-        margin-bottom:30px;
-        background-color:#fff3f3;
-        padding:10px;
-    }
-</style>
+
 <div class="container alttaraf">
         <a class="btn btn-default" href="@Url.Content("/Admin/Works")">Back</a>
         <a class="btn btn-success" href="@Url.Content("/Admin/WorkEdit/"+Model.Id)">Edit</a>

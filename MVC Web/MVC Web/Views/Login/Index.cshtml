@@ -12,18 +12,28 @@
 </head>
 
 <body>
-
+<style type="text/css">
+    body{
+        background-image:url("/Content/images/back.png");
+    }
+    .dkadem-login{
+        margin:20px;
+    }
+</style>
     <link href="~/Content/css/Login.css" rel="stylesheet" />
-    <div class="loginmodal-container">
-        <h1>Login to Your Account</h1><br>
-        <form method="post">
-            <input type="text" name="Username" id="Username" placeholder="Username" required>
-            <input type="password" name="Password" id="Password" placeholder="Password" required>
-            
-            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-            <a href="@Url.Content("/Home")">Back</a>
-        </form>
-        
+    <div class="dkadem-login">
+        <div class="loginmodal-container">
+            <h1>Login to Your Account</h1><br>
+            <form method="post">
+                <input type="text" name="Username" id="Username" placeholder="Username" required>
+                <input type="password" name="Password" id="Password" placeholder="Password" required>
+
+                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+                <a href="@Url.Content("/Home")">Back</a>
+            </form>
+
+        </div>
     </div>
+    
 </body>
 </html>

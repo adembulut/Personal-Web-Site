@@ -14,7 +14,7 @@
         font-size:20px;
     }
 </style>
-<div class="tab-4 resp-tab-content" aria-labelledby="tab_item-4">
+
     <div class="agile_about">
         <div class="agile_about_pos">
             <img src="~/Content/images/1.png" alt=" " class="img-responsive" />
@@ -23,7 +23,7 @@
     <div class="agileits_agile_about">
         <h3>@Model.Header</h3>
         <br />
-        
+
         <center>
             <div class="agile_about_blog_right_grid_list">
                 <ul>
@@ -31,21 +31,14 @@
                     <li><span class="glyphicon glyphicon-edit"></span><a href="#">@Model.AddedDate.Value.ToLongDateString() @Model.AddedDate.Value.ToShortTimeString()</a></li>
                 </ul>
             </div><br />
-        <img src="@Model.ImagePath" class="img-responsive" /></center>
+            <img src="@Url.Content(Model.ImagePath)" class="img-responsive" style="width:400px;height:300px;" />
+        </center>
 
-        
+
         <div class="dkadem_work_detail_p">
             <p>
                 @Model.Content
             </p>
         </div>
-       
-
-
-           
-       
-
 
     </div>
-
-</div>

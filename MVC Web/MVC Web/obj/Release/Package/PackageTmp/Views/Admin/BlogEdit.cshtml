@@ -1,0 +1,32 @@
+﻿@model MVC_Web.Models.Article
+@{
+    ViewBag.Title = "BlogEdit";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-12">
+            <form role="form" method="post" enctype="multipart/form-data">
+                <input hidden id="Id" name="Id" value="@Model.Id"/>
+                <br style="clear:both">
+                <h3 style="margin-bottom: 25px; text-align: center;">@Model.Header</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="Header" value="@Model.Header" name="Header" placeholder="Header" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" type="textarea" id="Content" name="Content" placeholder="Content" maxlength="140" rows="7" required>@Model.Content</textarea>
+                    <span class="help-block"><p id="characterLeft" class="help-block ">Be careful when organizing content.</p></span>
+                </div>
+                <div class="form-group">
+                    <label>Old Image :</label><br />
+                    <img class="img-responsive" src="@Url.Content(Model.ImagePath)" />
+                    <label>New Image </label><span> (Optional) :</span>
+                    <input class="form-control" type="file" accept="image/x-png,image/gif,image/jpeg" id="foto" name="foto">
+                </div>
+                <a href="@Url.Content("/Admin/Blogs")">Back</a>
+                <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Okay</button>
+            </form>
+        </div>
+   
+</div>
+

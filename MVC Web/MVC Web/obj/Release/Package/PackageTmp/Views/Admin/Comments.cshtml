@@ -1,0 +1,105 @@
+﻿@model List<MVC_Web.Models.Comment>
+@{
+    ViewBag.Title = "Comments";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+@helper YorumKisalt(string yazi) { 
+    if (yazi.Length > 20)
+    {
+        yazi = yazi.Substring(0, 20) + "...";
+    }
+    <text>@yazi</text>
+    }
+
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Article</th>
+                    <th>Comment</th>
+                    <th>Date</th>
+                    <th>isChech</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MVC_Web.Models.Comment item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@YorumKisalt(item.Article.Header)</td>
+                        <td>@YorumKisalt(item.Text)</td>
+                        <td>@item.AddedDate.Value.ToShortDateString()</td>
+                        <td>
+                            @if (item.isCheck == true)
+                            {
+                                <text>Ok</text>
+                            }
+                            else
+                            {
+                                <a href="@Url.Content("/Admin/CommentOk/"+item.Id)">Controlled</a>
+                            }
+                        </td>
+                        <td>
+                            <a  data-comment="@item.Article.Header" data-text="@item.Text" data-date="@item.AddedDate.Value.ToShortDateString()" onclick="Detail(this)">Detail</a> |
+                            <a data-id="@item.Id" onclick="Sil(this)">Delete </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Comment Detail</h4>
+            </div>
+            <div class="modal-body">
+                <span>Date :</span>
+                <p id="cmmDate" name="cmmDate"></p><br />
+                <span>Article :</span>
+                <p id="cmmArticle" name="cmmArticle"></p><br />
+                <span>Comment :</span>
+                <p id="cmmText" name="cmmText"></p><br />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function Detail(obje) {
+        var comm = obje.dataset.comment;
+        var date = obje.dataset.date;
+        var text = obje.dataset.text;
+        $('#cmmDate').text(date);
+        $('#cmmArticle').text(comm);
+        $('#cmmText').text(text);
+        $('#myModal').modal('show');
+    }
+    function Sil(event) {
+        var Id = event.dataset.id;
+        if (confirm("Are you sure Delete Comment?")) {
+            $.ajax({
+                url: '/Admin/CommentDelete',
+                data:{id:Id},
+                type: 'POST',
+                success: function (result) {
+                    alert(result);
+                    location.reload();
+                }, failure: function (result) {
+                    alert(result);
+                }
+            })
+        }
+    }
+</script>

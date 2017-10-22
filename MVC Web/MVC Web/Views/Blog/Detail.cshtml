@@ -8,7 +8,7 @@
 }
 <script src="~/Content/js/check.js"></script>
 <link href="~/Content/css/comment.css" rel="stylesheet" />
-<div class="tab-4 resp-tab-content" aria-labelledby="tab_item-4">
+
     <div class="agile_about">
         <div class="agile_about_pos">
             <img src="~/Content/images/1.png" alt=" " class="img-responsive" />
@@ -22,7 +22,7 @@
             <div class="agile_about_blog_right_grid_list">
                 <ul>
                     <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">@Model.User.NameSurname</a></li>
-                    <li style="margin-right:10px"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">@Model.Comments.Where(x=>x.isCheck==true).ToList().Count Comments</a></li>
+                    <li style="margin-right:10px"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">@Model.Comments.Where(x => x.isCheck == true).ToList().Count Comments</a></li>
                     <li><span class="glyphicon glyphicon-edit"></span><a href="#">@Model.Category.Name</a></li>
                 </ul>
             </div><br />
@@ -36,7 +36,7 @@
             </p>
         </div>
 
-        
+
 
 
 
@@ -73,7 +73,7 @@
                                         @if (item.Comment1.Count > 0)
                                         {
                                             <ul class="comments-list reply-list">
-                                                @foreach (Comment rr in item.Comment1.Where(x=>x.isCheck == true).ToList())
+                                                @foreach (Comment rr in item.Comment1.Where(x => x.isCheck == true).ToList())
                                                 {
                                                     <li>
                                                         <!-- Avatar -->
@@ -90,16 +90,16 @@
                                                         </div>
                                                     </li>
                                                 }
-                                                
-                                               
-                                                
+
+
+
                                             </ul>
                                         }
                                     </li>
                                 }
                             }
                         }
-                        
+
                     </ul>
                     <div class="yeni-Yorum">
                         <form id="CommentForm">
@@ -115,11 +115,11 @@
                             </div>
                             <div class="form-group">
                                 <b>*Name Surname :</b>
-                                <input class="form-control" type="text" name="NameSurname" id="NameSurname" required/>
+                                <input class="form-control" type="text" name="NameSurname" id="NameSurname" required />
                             </div>
                             <div class="form-group">
                                 <b>*Email : </b>
-                                <input class="form-control" type="email" name="Email" id="Email" required/>
+                                <input class="form-control" type="email" name="Email" id="Email" required />
                             </div>
                             <div class="form-group">
                                 <b>*Your Comment : </b>
@@ -128,9 +128,9 @@
                             <div class="form-group">
                                 <input class="btn btn-default" onclick="calistir()" value="Send Comment" />
                             </div>
-                            
+
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -138,7 +138,3 @@
 
 
     </div>
-
-    
-</div>
-

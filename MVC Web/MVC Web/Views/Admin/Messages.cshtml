@@ -1,0 +1,91 @@
+﻿@model List<MVC_Web.Models.Message>
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Subject</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MVC_Web.Models.Message item in Model)
+                {
+                    <tr>
+                        <td scope="row">@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.AddedDate.Value.ToShortDateString()</td>
+                        <td>@item.Subject</td>
+                        <td>
+                            <a href="#" data-message="@item.Content" data-subject="@item.Subject" onclick="MessageDetail(this)">Detail</a> | 
+                            <a href="#" data-id="@item.Id" onclick="MessageSil(this)">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    .model-body span{
+        font-weight:bold;
+    }
+</style>
+<div id="dtlModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Message Detail</h4>
+            </div>
+            <div class="modal-body">
+                <span>Subject :</span>
+                <p id="Subject" name="Subject"></p><br />
+                <span>Content :</span>
+                <p id="Content" name="Content"></p><br />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function MessageDetail(event) {
+        var detail = event.dataset.message;
+        var subject = event.dataset.subject;
+        $('#Subject').text(subject);
+        $('#Content').text(detail);
+        $('#dtlModal').modal('show');
+    }
+    function MessageSil(event) {
+        id = event.dataset.id;
+        if (confirm("Are you sure Delete Message!")) {
+            $.ajax({
+                url: '/Admin/MessageRemove',
+                type: 'POST',
+                data: { id: id },
+                success: function (result) {
+                    alert(result);
+                    location.reload();
+                },
+                failure: function (result) {
+                    alert(result);
+                }
+            })
+        }
+    }
+</script>

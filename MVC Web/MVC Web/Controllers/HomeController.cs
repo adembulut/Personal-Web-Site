@@ -29,6 +29,22 @@ namespace MVC_Web.Controllers
 
         public ActionResult Contact()
         {
+            ViewBag.Message = "";
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Contact(Message message)
+        {
+            if (message != null)
+            {
+                message.AddedDate = DateTime.Now;
+                db.Messages.Add(message);
+                db.SaveChanges();
+                ViewBag.Message = "Your message has been sent!";
+                return View();
+            }
+            ViewBag.Message = "";
             return View();
         }
 

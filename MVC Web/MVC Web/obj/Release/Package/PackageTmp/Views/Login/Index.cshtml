@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<body>
+
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+    <div class="loginmodal-container">
+        <h1>Login to Your Account</h1><br>
+        <form method="post">
+            <input type="text" name="Username" id="Username" placeholder="Username" required>
+            <input type="password" name="Password" id="Password" placeholder="Password" required>
+            
+            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+            <a href="@Url.Content("/Home")">Back</a>
+        </form>
+        
+    </div>
+</body>
+</html>

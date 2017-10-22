@@ -1,0 +1,75 @@
+﻿@model List<MVC_Web.Models.Work>
+@{
+    ViewBag.Title = "Works";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+@helper Kisalt(string yazi)
+{
+    if (yazi.Length > 25)
+    {
+        yazi = yazi.Substring(0, 25) + "...";
+    }
+    <text>@yazi</text>
+}
+
+<div class="container">
+    <h2 style="text-align:center;">Works</h2>
+    <a class="btn btn-success" href="@Url.Content("/Admin/WorkAdd")">New Work</a>
+
+    <div class="row">
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Header</th>
+                    <th>Content</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MVC_Web.Models.Work item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Header</td>
+                        <td>@Kisalt(item.Content)</td>
+                        <td>@item.AddedDate.Value.ToShortDateString()</td>
+                        <td>
+                            <a href="@Url.Content("/Admin/WorkEdit/"+item.Id)">Edit </a> |
+                            <a href="@Url.Content("/Admin/WorkDetail/"+item.Id)">Detail</a> |
+                            <a data-id="@item.Id" onclick="WorkDel(this)">Delete </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function WorkDel(event) {
+        if (confirm("Are you sure delete work?")) {
+            var id = event.dataset.id;
+         
+            $.ajax({
+                url: '/Admin/WorkDel',
+                type: 'POST',
+                data: { id: id },
+                success: function (result) {
+                    alert(result);
+                    if (result == "Work is Deleted!") {
+                        location.reload();
+                    }
+                }, failure: function (result) {
+                    alert(result);
+                }
+            })
+        }
+
+
+
+    }
+</script>

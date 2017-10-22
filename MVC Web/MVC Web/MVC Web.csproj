@@ -115,7 +115,9 @@
     <Content Include="Content\js\jquery-2.1.4.min.js" />
     <Content Include="Content\js\jquery.swipebox.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -136,9 +138,11 @@
     <Compile Include="Models\Mapping\ArticleMap.cs" />
     <Compile Include="Models\Mapping\CategoryMap.cs" />
     <Compile Include="Models\Mapping\CommentMap.cs" />
+    <Compile Include="Models\Mapping\MessageMap.cs" />
     <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Mapping\WorkMap.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Work.cs" />
@@ -175,6 +179,9 @@
     <Content Include="Views\Admin\WorkAdd.cshtml" />
     <Content Include="Views\Admin\WorkDetail.cshtml" />
     <Content Include="Views\Admin\WorkEdit.cshtml" />
+    <None Include="Properties\PublishProfiles\t.pubxml" />
+    <Content Include="Views\Admin\_TopLayout.cshtml" />
+    <Content Include="Views\Admin\Messages.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

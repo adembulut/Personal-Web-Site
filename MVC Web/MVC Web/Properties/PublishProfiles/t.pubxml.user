@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>ftp://ftp.adem-bulut.com/httpdocs</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="bin/MVC Web.dll">
+      <publishTime>10/22/2017 19:06:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>10/22/2017 17:33:26</publishTime>
+    </File>
+    <File Include="Content/css/AdminStyle.css">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap.css">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/css/comment.css">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/css/Login.css">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/css/style.css">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/css/swipebox.css">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/1.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/1.png">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/2.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/3.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/4.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/5.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/6.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/7.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/8.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/9.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/back.png">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/banner.jpg">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/icons.png">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/img-sp.png">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/images/Thumbs.db">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/js/bootstrap.js">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/js/check.js">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/js/easyResponsiveTabs.js">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/js/jquery-2.1.4.min.js">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Content/js/jquery.swipebox.min.js">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/AdminEdit.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/BlogAdd.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/BlogDetail.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/BlogEdit.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/BlogRemove.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/Blogs.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/Categories.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/Comments.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/Index.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/WorkAdd.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/WorkDetail.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/WorkEdit.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Admin/Works.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Blog/Detail.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Blog/Index.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Login/Index.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Work/Detail.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/Work/Index.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/_LayoutAdmin.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Views/_LayoutPage.cshtml">
+      <publishTime>10/22/2017 17:33:25</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/22/2017 18:45:22</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
